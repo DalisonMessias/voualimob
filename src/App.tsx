@@ -6,6 +6,7 @@ import DriverDashboard from "./components/DriverDashboard";
 import AdminDashboard from "./components/AdminDashboard";
 import PushNotificationManager from "./components/PushNotificationManager";
 import PWAInstallPrompt from "./components/PWAInstallPrompt";
+import { Analytics } from "@vercel/analytics/react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Bike, 
@@ -1703,6 +1704,9 @@ export default function App() {
       
       {/* PWA Smart Installation System */}
       <PWAInstallPrompt />
+      
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
