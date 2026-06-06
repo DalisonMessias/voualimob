@@ -26,6 +26,9 @@ import { auth } from "./lib/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { supabase } from "./lib/supabase";
 
+// Vercel Web Analytics
+import { Analytics } from "@vercel/analytics/react";
+
 const DEFAULT_SETTINGS: AppSettings = {
   taxaSaida: 5.0,        // Base starting fee (R$)
   valorKm: 2.0,          // Distance rate (R$)
@@ -1703,6 +1706,9 @@ export default function App() {
       
       {/* PWA Smart Installation System */}
       <PWAInstallPrompt />
+      
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
