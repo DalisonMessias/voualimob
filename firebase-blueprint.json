@@ -1,0 +1,226 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Role Registration",
+      "description": "Links actual Firebase Authentication UIDs to user type roles (client or driver).",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The UID matching request.auth.uid" },
+        "role": { "type": "string", "enum": ["client", "driver"], "description": "The type of user role" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "role"]
+    },
+    "Client": {
+      "title": "Client Profile",
+      "description": "Client personal profile and preferences stored in Firestore.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "avatar": { "type": "string" },
+        "favoritos": {
+          "type": "array",
+          "description": "Saved favorite travel locations"
+        },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "phone"]
+    },
+    "Driver": {
+      "title": "Mototaxista/Condutor Driver Profile",
+      "description": "Driver profile, vehicle identification doc details, and dynamic billing rates.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "avatar": { "type": "string" },
+        "veiculoPlaca": { "type": "string" },
+        "veiculoModelo": { "type": "string" },
+        "veiculoCor": { "type": "string" },
+        "veiculoTipo": { "type": "string", "enum": ["moto", "carro"] },
+        "capacidadePassageiros": { "type": "number" },
+        "capacidadeCargaKg": { "type": "number" },
+        "online": { "type": "boolean" },
+        "valorKm": { "type": "number" },
+        "taxaSaida": { "type": "number" },
+        "raioMaximo": { "type": "number" },
+        "modalidades": { "type": "array" },
+        "rating": { "type": "number" },
+        "customPricing": { "type": "object" },
+        "ridesCompletedCount": { "type": "number" },
+        "pixChave": { "type": "string" },
+        "pixTipoChave": { "type": "string", "enum": ["CPF", "CNPJ", "EMAIL", "PHONE", "EVP"] },
+        "pixNomeRecebedor": { "type": "string" },
+        "pixCidadeRecebedor": { "type": "string" },
+        "docMotoUrl": { "type": "string" },
+        "contractAcceptedVersion": { "type": "number" },
+        "contractAcceptedAt": { "type": "string", "format": "date-time" },
+        "creditsBalance": { "type": "number" },
+        "earningsBalance": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "name", "phone", "veiculoPlaca", "veiculoModelo", "veiculoTipo"]
+    },
+    "Contract": {
+      "title": "Digital Contract",
+      "description": "Platform terms and conditions versions.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "version": { "type": "number" },
+        "content": { "type": "string" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["version", "content", "active"]
+    },
+    "ContractAcceptance": {
+      "title": "Contract Acceptance Log",
+      "description": "Audit log of which driver accepted which contract version.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "contractVersion": { "type": "number" },
+        "acceptedAt": { "type": "string" },
+        "ip": { "type": "string" }
+      },
+      "required": ["userId", "contractVersion", "acceptedAt", "ip"]
+    },
+    "Ride": {
+      "title": "Ride Order",
+      "description": "Active and historic ride orders placed on the system by Passengers.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientId": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientPhone": { "type": "string" },
+        "driverId": { "type": "string" },
+        "driverName": { "type": "string" },
+        "driverPhone": { "type": "string" },
+        "veiculoPlaca": { "type": "string" },
+        "veiculoModelo": { "type": "string" },
+        "startAddress": { "type": "string" },
+        "endAddress": { "type": "string" },
+        "startCoords": { "type": "array" },
+        "endCoords": { "type": "array" },
+        "distance": { "type": "number" },
+        "duration": { "type": "number" },
+        "totalCost": { "type": "number" },
+        "modalidade": { "type": "string" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "observacoes": { "type": "string" },
+        "formaPagamento": { "type": "string" },
+        "statusPagamento": { "type": "string" },
+        "pixPayload": { "type": "string" },
+        "geometry": { "type": "array" }
+      },
+      "required": ["id", "clientId", "clientName", "startAddress", "endAddress", "distance", "totalCost", "status"]
+    },
+    "ChatMessage": {
+      "title": "Chat Message",
+      "description": "Text message exchanged inside an active ride.",
+      "type": "object",
+      "properties": {
+        "sender": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["sender", "text", "timestamp"]
+    },
+    "FinancialTransaction": {
+      "title": "Financial Transaction",
+      "description": "Logs of recharges and payments via PIX within the platform.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userRole": { "type": "string", "enum": ["client", "driver"] },
+        "amount": { "type": "number" },
+        "timestamp": { "type": "string" },
+        "type": { "type": "string", "enum": ["recharge_driver", "recharge_client", "platform_payment", "withdrawal", "transfer_to_credits", "ride_earning", "platform_fee"] },
+        "status": { "type": "string", "enum": ["pendente", "confirmado", "cancelado", "estornado", "pago"] },
+        "pixPayload": { "type": "string" },
+        "comprovanteUrl": { "type": "string" },
+        "confirmedAt": { "type": "string" },
+        "confirmedBy": { "type": "string" }
+      },
+      "required": ["id", "userId", "userName", "amount", "status", "type", "timestamp"]
+    },
+    "Withdrawal": {
+      "title": "Withdrawal Request",
+      "description": "Driver requests to withdraw earnings to their bank account.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "driverId": { "type": "string" },
+        "driverName": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pendente", "aprovado", "recusado", "pago"] },
+        "timestamp": { "type": "string" },
+        "pixKey": { "type": "string" },
+        "pixKeyType": { "type": "string" },
+        "processedAt": { "type": "string" },
+        "receiptUrl": { "type": "string" }
+      },
+      "required": ["id", "driverId", "amount", "status", "timestamp", "pixKey", "pixKeyType"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User registration roles."
+    },
+    "/settings/global": {
+      "schema": "object",
+      "description": "Shared platform settings including PIX and branding."
+    },
+    "/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Client profile details."
+    },
+    "/drivers/{driverId}": {
+      "schema": "Driver",
+      "description": "Driver profile configurations."
+    },
+    "/contracts/{contractId}": {
+      "schema": "Contract",
+      "description": "System contract versions."
+    },
+    "/contractAcceptances/{logId}": {
+      "schema": "ContractAcceptance",
+      "description": "Logs of driver contract acceptances."
+    },
+    "/rides/{rideId}": {
+      "schema": "Ride",
+      "description": "Ride transactions and booking sessions."
+    },
+    "/rides/{rideId}/chats/{msgId}": {
+      "schema": "ChatMessage",
+      "description": "Inline text messages for an active ride transaction."
+    },
+    "/financial_transactions/{txId}": {
+      "schema": "FinancialTransaction",
+      "description": "Financial records of recharges and payments."
+    },
+    "/support_tickets/{ticketId}": {
+      "schema": "SupportTicket",
+      "description": "Customer support tickets and disputes."
+    },
+    "/support_tickets/{ticketId}/messages/{msgId}": {
+      "schema": "SupportMessage",
+      "description": "Individual messages within a support ticket."
+    },
+    "/withdrawals/{id}": {
+      "schema": "Withdrawal",
+      "description": "Driver withdrawal requests."
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Vouali",
+  "description": "“Vouali e chego bem” — Plataforma premium de mobilidade urbana, transporte e entregas rápidas em tempo real, focada em segurança, tecnologia e rapidez.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,2 @@
+Ajustado o script 'dev' no package.json para utilizar 'npx tsx server.ts', resolvendo o erro de execução do comando tsx no Windows.
+Orientado o usuário a realizar a instalação das dependências do projeto através do comando npm install devido à ausência dos pacotes na pasta node_modules.

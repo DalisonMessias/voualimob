@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+:root {
+  --brand-primary: #f59e0b;
+  --brand-primary-light: #fbbf24;
+  --brand-primary-dark: #d97706;
+  --brand-accent: #10b981;
+  --brand-bg: #09090b;
+  --brand-card: #181c24;
+  --brand-button: #f59e0b;
+  --brand-navbar: #09090b;
+  --brand-premium: #f59e0b;
+}
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-amber-500: var(--brand-primary);
+  --color-amber-400: var(--brand-primary-light);
+  --color-amber-600: var(--brand-primary-dark);
+  --color-emerald-500: var(--brand-accent);
+  --color-zinc-950: var(--brand-bg);
+  --color-zinc-900: var(--brand-card);
+  --color-slate-950: var(--brand-bg);
+  --color-slate-900: var(--brand-card);
+}
+
+/* Custom transitions and scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b; /* zinc-950 */
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a; /* zinc-800 */
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b; /* amber-500 */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Fix leaflet map sizing and dark mode theme */
+.leaflet-container {
+  background: #09090b !important;
+  font-family: inherit;
+}
+
+/* Custom dark styling for leaflet controls matching High Density theme */
+.leaflet-bar a {
+  background-color: #18181b !important;
+  color: #f4f4f5 !important;
+  border-bottom: 1px solid #27272a !important;
+}
+.leaflet-bar a:hover {
+  background-color: #27272a !important;
+  color: #f59e0b !important;
+}
+.leaflet-control-zoom {
+  border: 1px solid #27272a !important;
+  box-shadow: none !important;
+}
+.leaflet-popup-content-wrapper {
+  background: #18181b !important;
+  color: #f4f4f5 !important;
+  border: 1px solid #27272a !important;
+  border-radius: 12px !important;
+  padding: 4px !important;
+}
+.leaflet-popup-tip {
+  background: #18181b !important;
+  border: 1px solid #27272a !important;
+}
+
+/* Markdown Styles for Chats */
+.markdown-body {
+  font-size: inherit;
+  line-height: 1.6;
+}
+
+.markdown-body p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body strong {
+  font-weight: 900;
+  color: inherit;
+}
+
+.markdown-body ul, .markdown-body ol {
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.markdown-body ul {
+  list-style-type: disc;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body li {
+  margin-bottom: 0.25rem;
+}

@@ -1,0 +1,51 @@
+{
+  "name": "Vouali",
+  "short_name": "Vouali",
+  "description": "Vouali e chego bem. Mobilidade urbana rápida, segura e sem APK.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#f59e0b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=192&h=192&fit=crop",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=512&h=512&fit=crop",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ficar Online",
+      "url": "/?action=go_online",
+      "icons": [{ "src": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=96&h=96&fit=crop", "sizes": "96x96" }]
+    },
+    {
+      "name": "Nova Corrida",
+      "url": "/",
+      "icons": [{ "src": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=96&h=96&fit=crop", "sizes": "96x96" }]
+    },
+    {
+      "name": "Histórico",
+      "url": "/#history",
+      "icons": [{ "src": "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=96&h=96&fit=crop", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["travel", "productivity", "transportation"],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=720&h=1280&fit=crop",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mapa em tempo real"
+    }
+  ]
+}
